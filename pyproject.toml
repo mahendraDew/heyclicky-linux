@@ -1,0 +1,64 @@
+[build-system]
+requires = ["setuptools>=77", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "heyclicky-linux"
+version = "0.1.0"
+description = "A push-to-talk AI companion with screen awareness, ported to Linux"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "heyclicky-linux contributors" }]
+keywords = ["ai", "assistant", "push-to-talk", "linux", "groq", "gemini", "ollama"]
+classifiers = [
+    "Environment :: X11 Applications :: Qt",
+    "Intended Audience :: End Users/Desktop",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+dependencies = [
+    "PyQt6>=6.6",
+    "httpx>=0.27",
+    "Pillow>=10.0",
+    "mss>=9.0",
+    "numpy>=1.24",
+    "edge-tts>=6.1",
+    "evdev>=1.7; sys_platform == 'linux'",
+    "pynput>=1.7",
+]
+
+[project.optional-dependencies]
+local-stt = ["faster-whisper>=1.0"]
+dev = ["pytest>=8.0", "pytest-qt>=4.4", "ruff>=0.5", "build>=1.0"]
+
+[project.scripts]
+heyclicky = "heyclicky.app:main"
+
+[project.urls]
+Homepage = "https://www.heyclicky.com/"
+Original = "https://github.com/farzaa/clicky"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "-q"
+filterwarnings = ["ignore::DeprecationWarning"]
+
+[tool.ruff]
+line-length = 110
+target-version = "py310"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+ignore = ["E501", "B008", "SIM105"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["B011"]

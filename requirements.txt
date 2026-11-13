@@ -1,0 +1,11 @@
+PyQt6>=6.6
+httpx>=0.27
+Pillow>=10.0
+mss>=9.0
+numpy>=1.24
+edge-tts>=6.1
+evdev>=1.7
+pynput>=1.7
+
+# optional, for fully offline speech-to-text
+# faster-whisper>=1.0

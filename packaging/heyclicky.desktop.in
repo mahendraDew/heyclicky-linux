@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Clicky
+GenericName=AI Companion
+Comment=Push-to-talk AI companion with screen awareness
+Exec=@EXEC@
+Icon=heyclicky
+Terminal=false
+Categories=Utility;Accessibility;
+Keywords=ai;assistant;voice;screen;groq;gemini;ollama;
+StartupNotify=false
+StartupWMClass=heyclicky
